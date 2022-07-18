@@ -38,21 +38,21 @@ package leetcode.editor.cn;
 public class RemoveLinkedListElements {
     public static void main(String[] args) {
         Solution solution = new RemoveLinkedListElements().new Solution();
-        ListNode listNode = new ListNode(1);
-        ListNode listNode1 = new ListNode(2);
-        ListNode listNode2 = new ListNode(6);
-        ListNode listNode3 = new ListNode(3);
-        ListNode listNode4 = new ListNode(4);
-        ListNode listNode5 = new ListNode(5);
-        ListNode listNode6 = new ListNode(6);
-        listNode5.next = listNode6;
-        listNode4.next = listNode5;
-        listNode3.next = listNode4;
+        ListNode listNode = new ListNode(7);
+        ListNode listNode1 = new ListNode(7);
+        ListNode listNode2 = new ListNode(7);
+        ListNode listNode3 = new ListNode(7);
+//        ListNode listNode4 = new ListNode(4);
+//        ListNode listNode5 = new ListNode(5);
+//        ListNode listNode6 = new ListNode(6);
+//        listNode5.next = listNode6;
+//        listNode4.next = listNode5;
+//        listNode3.next = listNode4;
         listNode2.next = listNode3;
         listNode1.next = listNode2;
         listNode.next = listNode1;
 
-        solution.removeElements(new ListNode(),6);
+        solution.removeElements(listNode, 7);
     }
 
 //leetcode submit region begin(Prohibit modification and deletion)
@@ -69,17 +69,19 @@ public class RemoveLinkedListElements {
      */
     class Solution {
         public ListNode removeElements(ListNode head, int val) {
+            while (head != null && head.val == val) {
+                head = head.next;
+            }
             if (head == null) {
                 return null;
             }
-            ListNode virtualHead = new ListNode();
-            virtualHead.next = head;
-            ListNode curNode = virtualHead;
-            while (curNode != null) {
-                if (curNode.next.val == val) {
-                    curNode.next = curNode.next.next;
+            ListNode cur = head;
+            while (cur.next != null) {
+                if (cur.next.val == val) {
+                    cur.next = cur.next.next;
+                } else {
+                    cur = cur.next;
                 }
-                curNode = curNode.next;
             }
             return head;
         }
