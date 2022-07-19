@@ -42,67 +42,93 @@ public class DesignLinkedList {
     public static void main(String[] args) {
         DesignLinkedList designLinkedList = new DesignLinkedList();
         MyLinkedList list = designLinkedList.new MyLinkedList();
-        for (int i = 0; i < 8; i++) {
 
-        }
+        list.addAtHead(1);
+        list.addAtHead(2);
+        list.addAtTail(3);
+        list.addAtIndex(2, 5);
+        list.addAtIndex(2, 4);
+        list.addAtHead(7);
+        list.addAtIndex(4, 9);
         System.out.println(1);
-
 
     }
 
     //leetcode submit region begin(Prohibit modification and deletion)
-    class MyLinkedList {
-
-        private Node head;
-
-        private int size;
-
-        public MyLinkedList() {
-
-        }
-
-        public int get(int index) {
-            if (index < 0 || index >= this.size) {
-                return -1;
-            }
-            Node cur = this.head;
-            for (int i = 0; i < index; i++) {
-                cur = cur.next;
-            }
-            return cur.val;
-        }
-
-        public void addAtHead(int val) {
-
-        }
-
-        public void addAtTail(int val) {
-            
-        }
-
-        public void addAtIndex(int index, int val) {
-
-        }
-
-        public void deleteAtIndex(int index) {
-
-        }
-    }
-
-    class Node {
+    public class Node {
         int val;
         Node next;
 
-        public Node() {
+        Node(int x) {
+            val = x;
+        }
+    }
+
+    class MyLinkedList {
+        int size;
+        Node head;  // sentinel node as pseudo-head
+
+        public MyLinkedList() {
+            size = 0;
+            head = new Node(0);
         }
 
-        public Node(int val) {
-            this.val = val;
+        public int get(int index) {
+            if (index < 0 || index >= size) return -1;
+
+            Node curr = head;
+            for (int i = 0; i <= index; i++) {
+                curr = curr.next;
+            }
+            return curr.val;
         }
 
-        public Node(int val, Node next) {
-            this.val = val;
-            this.next = next;
+        public void addAtHead(int val) {
+            addAtIndex(0, val);
+        }
+
+        /**
+         * Append a node of value val to the last element of the linked list.
+         */
+        public void addAtTail(int val) {
+            addAtIndex(size, val);
+        }
+
+        /**
+         * Add a node of value val before the index-th node in the linked list. If index equals to the length of linked list, the node will be appended to the end of linked list. If index is greater than the length, the node will not be inserted.
+         */
+        public void addAtIndex(int index, int val) {
+            if (index > size) {
+                return;
+            }
+
+            if (index < 0) {
+                index = 0;
+            }
+
+            Node cur = head;
+            for (int i = 0; i < index; ++i) {
+                cur = cur.next;
+            }
+
+            Node node = new Node(val);
+            node.next = cur.next;
+            cur.next = node;
+            size++;
+        }
+
+        public void deleteAtIndex(int index) {
+            if (index < 0 || index >= size) {
+                return;
+            }
+
+            Node cur = head;
+            for (int i = 0; i < index; i++) {
+                cur = cur.next;
+            }
+
+            cur.next = cur.next.next;
+            size--;
         }
     }
 /**
