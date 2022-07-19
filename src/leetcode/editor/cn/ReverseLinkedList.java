@@ -42,6 +42,8 @@ package leetcode.editor.cn;
 // 
 // Related Topics 递归 链表 👍 2631 👎 0
 
+import leetcode.editor.cn.common.ListNode;
+
 public class ReverseLinkedList {
     public static void main(String[] args) {
         Solution solution = new ReverseLinkedList().new Solution();
@@ -94,23 +96,6 @@ public class ReverseLinkedList {
             cur.next = pre;
             // 递归调用, 将cur做前一个节点(pre指针指向), 将tmp(cur指向节点的下一个节点)作为当前节点
             return reverse(cur, tmp);
-        }
-    }
-
-    public class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode() {
-        }
-
-        ListNode(int val) {
-            this.val = val;
-        }
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)

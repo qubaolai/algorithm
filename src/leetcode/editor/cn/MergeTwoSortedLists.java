@@ -36,6 +36,8 @@ package leetcode.editor.cn;
 // 
 // Related Topics 递归 链表 👍 2536 👎 0
 
+import leetcode.editor.cn.common.ListNode;
+
 public class MergeTwoSortedLists {
     public static void main(String[] args) {
         Solution solution = new MergeTwoSortedLists().new Solution();
@@ -61,20 +63,4 @@ public class MergeTwoSortedLists {
     }
 
     //leetcode submit region end(Prohibit modification and deletion)
-    private class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode() {
-        }
-
-        ListNode(int val) {
-            this.val = val;
-        }
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
-    }
 }

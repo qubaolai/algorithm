@@ -35,6 +35,8 @@ package leetcode.editor.cn;
 // 
 // Related Topics 递归 链表 👍 963 👎 0
 
+import leetcode.editor.cn.common.ListNode;
+
 public class RemoveLinkedListElements {
     public static void main(String[] args) {
         Solution solution = new RemoveLinkedListElements().new Solution();
@@ -88,20 +90,4 @@ public class RemoveLinkedListElements {
     }
 
     //leetcode submit region end(Prohibit modification and deletion)
-    private static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode() {
-        }
-
-        ListNode(int val) {
-            this.val = val;
-        }
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
-    }
 }
